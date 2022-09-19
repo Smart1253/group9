@@ -1,96 +1,135 @@
-let menuBtn = document.querySelector('#menu-btn');
-let navbar = document.querySelector('.header .flex .navbar');
+let navbar = document.querySelector('.header .navbar')
 
-menuBtn.onclick = () =>{
-   menuBtn.classList.toggle('fa-times');
-   navbar.classList.toggle('active');
+document.querySelector('#menu-btn').onclick = () =>{
+  navbar.classList.add('active');
 }
 
-window.onscroll = () =>{
-   menuBtn.classList.remove('fa-times');
-   navbar.classList.remove('active');
+document.querySelector('#close-navbar').onclick = () =>{
+  navbar.classList.remove('active');
+};
+
+let registerBtn = document.querySelector('.account-form .register-btn');
+let loginBtn = document.querySelector('.account-form .login-btn');
+
+registerBtn.onclick = () =>{
+  registerBtn.classList.add('active');
+  loginBtn.classList.remove('active');
+  document.querySelector('.account-form .login-form').classList.remove('active');
+  document.querySelector('.account-form .register-form').classList.add('active');
+};
+
+loginBtn.onclick = () =>{
+  registerBtn.classList.remove('active');
+  loginBtn.classList.add('active');
+  document.querySelector('.account-form .login-form').classList.add('active');
+  document.querySelector('.account-form .register-form').classList.remove('active');
+};
+
+let accountForm = document.querySelector('.account-form')
+
+document.querySelector('#account-btn').onclick = () =>{
+  accountForm.classList.add('active');
 }
 
+document.querySelector('#close-form').onclick = () =>{
+  accountForm.classList.remove('active');
+};
 
-
-var type = new Typed('.typing-text',{
-  strings : [ 'the best', 'your future ', 'intellegent', 'the nature of your life' ],
-  typeSpeed: 120,
-  loop:true
+var swiper = new Swiper(".home-slider", {
+  pagination: {
+    el: ".swiper-pagination",
+    clickable:true,
+  },
+  loop:true,
+  grabCursor:true,
 });
 
-
-var swiper = new Swiper(".course-slider", {
-   spaceBetween: 20,
-   loop:true,
-   autoplay: {
-    delay: 5000,
-    disableOnInteraction: false,
-},
-centeredSlides: true,
-   pagination: {
-     el: ".swiper-pagination",
-     clickable: true,
-   },
-   breakpoints: {
-      540: {
-        slidesPerView: 1,
-      },
-      768: {
-        slidesPerView: 2,
-      },
-      1024: {
-        slidesPerView: 3,
-      },
-   },
+var swiper = new Swiper(".home-courses-slider", {
+  loop:true,
+  grabCursor:true,
+  spaceBetween: 20,
+  breakpoints: {
+    0: {
+      slidesPerView: 1,
+    },
+    768: {
+      slidesPerView: 2,
+    },
+    991: {
+      slidesPerView: 3,
+    },
+  },
 });
 
 var swiper = new Swiper(".teachers-slider", {
-   spaceBetween: 20,
-   loop:true,
-   autoplay: {
-    delay: 5000,
-    disableOnInteraction: false,
-},
-centeredSlides: true,
-   pagination: {
-     el: ".swiper-pagination",
-     clickable: true,
-   },
-   breakpoints: {
-      540: {
-        slidesPerView: 1,
-      },
-      768: {
-        slidesPerView: 2,
-      },
-      1024: {
-        slidesPerView: 3,
-      },
-   },
+  loop:true,
+  grabCursor:true,
+  spaceBetween: 20,
+  breakpoints: {
+    0: {
+      slidesPerView: 1,
+    },
+    768: {
+      slidesPerView: 2,
+    },
+    991: {
+      slidesPerView: 3,
+    },
+  },
 });
 
 var swiper = new Swiper(".reviews-slider", {
-   spaceBetween: 20,
-   autoplay: {
-    delay: 7500,
-    disableOnInteraction: false,
-},
-centeredSlides: true,
-   loop:true,
-   pagination: {
-     el: ".swiper-pagination",
-     clickable: true,
-   },
-   breakpoints: {
-      540: {
-        slidesPerView: 1,
-      },
-      768: {
-        slidesPerView: 2,
-      },
-      1024: {
-        slidesPerView: 3,
-      },
-   },
+  loop:true,
+  grabCursor:true,
+  spaceBetween: 20,
+  breakpoints: {
+    0: {
+      slidesPerView: 1,
+    },
+    768: {
+      slidesPerView: 2,
+    },
+    991: {
+      slidesPerView: 3,
+    },
+  },
 });
+
+var swiper = new Swiper(".logo-slider", {
+  loop:true,
+  grabCursor:true,
+  spaceBetween: 20,
+  breakpoints: {
+    0: {
+      slidesPerView: 1,
+    },
+    450: {
+      slidesPerView: 2,
+    },
+    768: {
+      slidesPerView: 3,
+    },
+    991: {
+      slidesPerView: 4,
+    },
+    1200: {
+      slidesPerView: 5,
+    },
+  },
+});
+
+let accordion = document.querySelectorAll('.faq .accordion-container .accordion');
+
+accordion.forEach(acco =>{
+  acco.onclick = () =>{
+    accordion.forEach(dion => dion.classList.remove('active'));
+    acco.classList.toggle('active');
+  };
+});
+
+document.querySelector('.load-more .btn').onclick = () =>{
+  document.querySelectorAll('.courses .box-container .hide').forEach(show =>{
+    show.style.display = 'block';
+  });
+  document.querySelector('.load-more .btn').style.display = 'none';
+};
